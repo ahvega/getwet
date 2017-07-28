@@ -1,17 +1,70 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Abonados</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="codigoBanco" placeholder="Código Banco"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="direccion" placeholder="Dirección"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="numeroMedidor" placeholder="Número de Medidor"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="lecturaActual" placeholder="Lectura Anterior"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="lecturaAnterior" placeholder="Lectura Actual"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button color="secondary" ion-button block (click)="addAbonado()">Agregar Abonado
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let abonado of abonados | async">
+      <ion-item>
+        {{ abonado.nombre }}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" icon-only (click)="removeAbonado(abonado.$key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>

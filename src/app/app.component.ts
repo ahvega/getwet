@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
+import { MedidorPage } from '../pages/medidor/medidor';
+import { LecturasPage } from '../pages/lecturas/lecturas';
+import { LecturaPage } from '../pages/lectura/lectura';
+import { AbonadosPage } from '../pages/abonados/abonados';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  @ViewChild(Nav) navCtrl: Nav;
+    rootPage:any = AbonadosPage;
+ // rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -18,5 +23,18 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+  goToAbonados(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(AbonadosPage);
+  }goToMedidor(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(MedidorPage);
+  }goToLecturas(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(LecturasPage);
+  }goToLectura(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(LecturaPage);
   }
 }

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Lecturas
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding id="page2">
+  <!--<form id="lecturas-form2">-->
+  <!--<ion-searchbar placeholder="" name="" id="lecturas-search2"></ion-searchbar>-->
+  <!--</form>-->
+  <div class="spacer" style="width:100%;height:2px;" id="lecturas-spacer2"></div>
+  <ion-list>
+    <ion-item-sliding *ngFor="let lectura of lecturas | async">
+      <ion-item>
+        <h2>{{lectura.fecha}}</h2>
+        <p>
+          <small>Anterior: <strong>{{lectura.lectura_anterior}}</strong> • Actual:
+            <strong>{{lectura.lectura_actual}}</strong></small>
+        </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" icon-only (click)="updateLectura(lectura)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" icon-only (click)="removeLecura(lectura)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab bottom right padding-bottom="20px" padding-right="20px">
+    <button ion-fab color="danger" (click)="addLectura()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
