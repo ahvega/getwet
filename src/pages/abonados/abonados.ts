@@ -9,11 +9,14 @@ import { FirebaseService } from "../../providers/firebase-service/firebase-servi
 })
 export class AbonadosPage {
   abonados: FirebaseListObservable<any[]>;
-//  abonadosLst = [];
+  abonadosLst = [];
 
   constructor(public firebaseService: FirebaseService,
               public alertCtrl: AlertController) {
     this.abonados = this.firebaseService.getAbonados();
+    for (let i = 0; i < 30; i++){
+      this.abonadosLst.push(this.abonadosLst.length);
+    }
   }
 
   addAbonado():void {
@@ -23,11 +26,15 @@ export class AbonadosPage {
       message: 'Ingrese la información',
       inputs: [
         {
+          name: 'correlativo',
+          placeholder: 'Correlativo'
+        },
+        {
           name: 'nombre',
           placeholder: 'Nombre'
         },
         {
-          name: 'codigo_banco',
+          name: 'codigo',
           placeholder: 'Código Banco'
         },
         {
@@ -35,7 +42,7 @@ export class AbonadosPage {
           placeholder: 'Dirección'
         },
         {
-          name: 'numero_medidor',
+          name: 'medidor',
           placeholder: 'Número Medidor'
         }
       ],
@@ -50,10 +57,11 @@ export class AbonadosPage {
           text: "Guardar",
           handler: data => {
             this.abonados.push({
+              correlativo: data.correlativo,
               nombre: data.nombre,
-              codigo_banco: data.codigo_banco,
+              codigo: data.codigo,
               direccion: data.direccion,
-              numero_medidor: data.numero_medidor
+              medidor: data.medidor
             })
           }
         }
@@ -71,20 +79,24 @@ export class AbonadosPage {
       message: 'Edite la información',
       inputs: [
         {
+          name: 'correlativo',
+          placeholder: abonado.correlativo
+        },
+        {
           name: 'nombre',
           placeholder: abonado.nombre
         },
         {
-          name: 'codigo_banco',
-          placeholder: abonado.codigo_banco
+          name: 'codigo',
+          placeholder: abonado.codigo
         },
         {
           name: 'direccion',
           placeholder: abonado.direccion
         },
         {
-          name: 'numero_medidor',
-          placeholder: abonado.numero_medidor
+          name: 'medidor',
+          placeholder: abonado.medidor
         }
       ],
       buttons: [
@@ -97,16 +109,18 @@ export class AbonadosPage {
         {
           text: "Guardar",
           handler: data => {
+            let newCorrelativo:Number = (data.correlativo != '') ? data.correlativo: abonado.correlativo;
             let newNombre:String = (data.nombre != '') ? data.nombre : abonado.nombre;
-            let newCodigo_banco:Number = (data.codigo_banco!='') ? data.codigo_banco : abonado.codigo_banco;
+            let newCodigo:Number = (data.codigo!='') ? data.codigo : abonado.codigo;
             let newDireccion:String = (data.direccion != '') ? data.direccion : abonado.direccion;
-            let newNumero_medidor:Number = (data.numero_medidor != '') ? data.numero_medidor : abonado.numero_medidor;
+            let newMedidor:Number = (data.medidor != '') ? data.medidor : abonado.medidor;
 
             this.abonados.update(abonado.$key, {
+              correlativo: newCorrelativo,
               nombre: newNombre,
-              codigo_banco: newCodigo_banco,
+              codigo: newCodigo,
               direccion: newDireccion,
-              numero_medidor: newNumero_medidor
+              medidor: newMedidor
             })
           }
         }
