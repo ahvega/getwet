@@ -18,6 +18,9 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { AbonadoProvider } from '../providers/abonado/abonado';
+import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAsBg6DVwLgtcyGdY8-60kSCiu2K6CiQt4",
@@ -36,12 +39,14 @@ const firebaseConfig = {
     MedidorPage,
     IngresarPage,
     AbonadoPage,
-    LecturaPage
+    LecturaPage,
+    AbonadosListPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AngularFireDatabaseModule,
+    InfiniteScrollModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp)
   ],
@@ -53,13 +58,15 @@ const firebaseConfig = {
     MedidorPage,
     IngresarPage,
     AbonadoPage,
-    LecturaPage
+    LecturaPage,
+    AbonadosListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     FirebaseService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AbonadoProvider
   ]
 })
 export class AppModule {}

@@ -7,13 +7,14 @@ import { MedidorPage } from '../pages/medidor/medidor';
 import { LecturasPage } from '../pages/lecturas/lecturas';
 import { LecturaPage } from '../pages/lectura/lectura';
 import { AbonadosPage } from '../pages/abonados/abonados';
+import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = AbonadosPage;
+    rootPage:any = AbonadosListPage;
  // rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
