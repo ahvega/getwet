@@ -8,33 +8,46 @@ import { LecturasPage } from '../pages/lecturas/lecturas';
 import { LecturaPage } from '../pages/lectura/lectura';
 import { AbonadosPage } from '../pages/abonados/abonados';
 import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
+// import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = AbonadosListPage;
- // rootPage:any = TabsPage;
+    // rootPage:any = AbonadosListPage;
+ rootPage:any = AbonadosPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform,
+              statusBar: StatusBar,
+              splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
   }
+
   goToAbonados(params){
     if (!params) params = {};
     this.navCtrl.setRoot(AbonadosPage);
-  }goToMedidor(params){
+  }
+
+  goToAbonadosList(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(AbonadosListPage)
+  }
+
+  goToMedidor(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MedidorPage);
-  }goToLecturas(params){
+  }
+
+  goToLecturas(params){
     if (!params) params = {};
     this.navCtrl.setRoot(LecturasPage);
-  }goToLectura(params){
+  }
+
+  goToLectura(params){
     if (!params) params = {};
     this.navCtrl.setRoot(LecturaPage);
   }

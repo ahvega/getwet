@@ -9,14 +9,10 @@ import { FirebaseService } from "../../providers/firebase-service/firebase-servi
 })
 export class AbonadosPage {
   abonados: FirebaseListObservable<any[]>;
-  abonadosLst = [];
 
   constructor(public firebaseService: FirebaseService,
               public alertCtrl: AlertController) {
     this.abonados = this.firebaseService.getAbonados();
-    for (let i = 0; i < 30; i++){
-      this.abonadosLst.push(this.abonadosLst.length);
-    }
   }
 
   addAbonado():void {
