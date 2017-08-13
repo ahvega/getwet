@@ -15,8 +15,8 @@ import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    // rootPage:any = AbonadosListPage;
- rootPage:any = AbonadosPage;
+    rootPage:any = AbonadosListPage;
+ // rootPage:any = AbonadosPage;
 
   constructor(platform: Platform,
               statusBar: StatusBar,

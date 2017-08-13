@@ -18,7 +18,7 @@ export class AbonadosListPage implements OnInit {
   abonados: FirebaseListObservable<any[]>;
   abonadosList = new BehaviorSubject([]);
 
-  batch = 10;        // tamaño de cada query
+  batch = 10;       // tamaño de cada query
   lastKey = '';     // key desde donde offset la nueva query
   finished = false; // boolean cuando se alcance el final de los datos
 
@@ -33,9 +33,11 @@ export class AbonadosListPage implements OnInit {
     this.getAbonados()
   }
 
-  onScroll() {
+  onScroll(infiniteScroll) {
     console.log('scrolled!');
-    this.getAbonados()
+    this.getAbonados();
+
+    infiniteScroll.complete();
   }
 
   private getAbonados(key?) {
@@ -47,10 +49,11 @@ export class AbonadosListPage implements OnInit {
 
         // setear lastKey en preparacion par ala próxima query
         this.lastKey = _.last(abonados)['$key'];
-        const newAbonados = _.slice(abonados, 0, this.batch)
+        const newAbonados = _.slice(abonados, 0, this.batch);
 
         // obtener los primeros abonados en el BehaviorSubject
-        const currentAbonados = this.abonadosList.getValue()
+        const currentAbonados = this.abonadosList.getValue();
+        console.log(currentAbonados);
 
         // Si la data es identica, parar de hacer queries
         if (this.lastKey == _.last(newAbonados)['$key']) {

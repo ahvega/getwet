@@ -23,10 +23,15 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
-    <div infiniteScroll
-         [infiniteScrollDistance]="2"
-         [infiniteScrollThrottle]="1000"
-         (scrolled)="onScroll()"></div>
+    <!--<div infiniteScroll-->
+         <!--[infiniteScrollDistance]="2"-->
+         <!--[infiniteScrollThrottle]="1000"-->
+         <!--(scrolled)="onScroll()"></div>-->
+
+    <ion-infinite-scroll (ionInfinite)="onScroll($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
 
     <ion-loading *ngIf="!finished"></ion-loading>
     <div *ngIf="finished">
