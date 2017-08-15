@@ -1,5 +1,8 @@
 {
   "name": "GetWet",
   "app_id": "4c167f67",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

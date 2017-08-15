@@ -10,7 +10,6 @@ import { IngresarPage } from '../pages/ingresar/ingresar';
 import { AbonadoPage } from '../pages/abonado/abonado';
 import { LecturaPage } from '../pages/lectura/lectura';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,7 +18,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { AbonadoProvider } from '../providers/abonado/abonado';
 import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 
 const firebaseConfig = {
@@ -66,7 +64,6 @@ const firebaseConfig = {
     SplashScreen,
     FirebaseService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AbonadoProvider
   ]
 })
 export class AppModule {}

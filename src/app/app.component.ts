@@ -8,15 +8,15 @@ import { LecturasPage } from '../pages/lecturas/lecturas';
 import { LecturaPage } from '../pages/lectura/lectura';
 import { AbonadosPage } from '../pages/abonados/abonados';
 import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
-// import { AbonadosListPage } from "../pages/abonados-list/abonados-list";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = AbonadosListPage;
- // rootPage:any = AbonadosPage;
+  rootPage: any = AbonadosListPage;
+
+  // rootPage:any = AbonadosPage;
 
   constructor(platform: Platform,
               statusBar: StatusBar,
@@ -27,27 +27,27 @@ export class MyApp {
     });
   }
 
-  goToAbonados(params){
+  goToAbonados(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(AbonadosPage);
   }
 
-  goToAbonadosList(params){
+  goToAbonadosList(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(AbonadosListPage)
   }
 
-  goToMedidor(params){
+  goToMedidor(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(MedidorPage);
   }
 
-  goToLecturas(params){
+  goToLecturas(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(LecturasPage);
   }
 
-  goToLectura(params){
+  goToLectura(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(LecturaPage);
   }

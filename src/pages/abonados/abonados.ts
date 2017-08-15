@@ -15,7 +15,7 @@ export class AbonadosPage {
     this.abonados = this.firebaseService.getAbonados();
   }
 
-  addAbonado():void {
+  addAbonado(): void {
 
     let prompt = this.alertCtrl.create({
       title: 'Agregando Abonado',
@@ -68,7 +68,7 @@ export class AbonadosPage {
 
   }
 
-  updateAbonado(abonado):void {
+  updateAbonado(abonado): void {
 
     let prompt = this.alertCtrl.create({
       title: 'Actualizar Abonado',
@@ -105,11 +105,11 @@ export class AbonadosPage {
         {
           text: "Guardar",
           handler: data => {
-            let newCorrelativo:Number = (data.correlativo != '') ? data.correlativo: abonado.correlativo;
-            let newNombre:String = (data.nombre != '') ? data.nombre : abonado.nombre;
-            let newCodigo:Number = (data.codigo!='') ? data.codigo : abonado.codigo;
-            let newDireccion:String = (data.direccion != '') ? data.direccion : abonado.direccion;
-            let newMedidor:Number = (data.medidor != '') ? data.medidor : abonado.medidor;
+            let newCorrelativo: Number = (data.correlativo != '') ? data.correlativo : abonado.correlativo;
+            let newNombre: String = (data.nombre != '') ? data.nombre : abonado.nombre;
+            let newCodigo: Number = (data.codigo != '') ? data.codigo : abonado.codigo;
+            let newDireccion: String = (data.direccion != '') ? data.direccion : abonado.direccion;
+            let newMedidor: Number = (data.medidor != '') ? data.medidor : abonado.medidor;
 
             this.abonados.update(abonado.$key, {
               correlativo: newCorrelativo,
@@ -127,7 +127,7 @@ export class AbonadosPage {
 
   }
 
-  removeAbonado(abonado):void {
+  removeAbonado(abonado): void {
 
     let prompt = this.alertCtrl.create({
       title: 'Eliminar Abonado',

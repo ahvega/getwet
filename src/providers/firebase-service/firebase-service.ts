@@ -4,31 +4,44 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FirebaseService {
 
-  constructor(public root: AngularFireDatabase) {
+  constructor(public db: AngularFireDatabase) {
   }
 
   getAbonados() {
-    return this.root.list('/abonados/')
+    return this.db.list('/abonados/')
+  }
+
+  getAbonadosBatch(batch, lastKey?) {
+    let query = {
+      orderByKey: true,
+      limitToFirst: batch,
+    };
+
+    if (lastKey) query['startAt'] = lastKey;
+
+    return this.db.list('/abonados', {
+      query
+    })
   }
 
   addAbonado(data) {
-    this.root.list('/abonados/').push(data);
+    this.db.list('/abonados/').push(data);
   }
 
   removeAbonado(id) {
-    this.root.list('/abonados/').remove(id);
+    this.db.list('/abonados/').remove(id);
   }
 
   getLecturas() {
-    return this.root.list('/lecturas/')
+    return this.db.list('/lecturas/')
   }
 
-  addLectura(data) {
-    this.root.list('/lecturas/').push(data);
-  }
-
-  removeLectura(id) {
-    this.root.list('/lecturas/').remove(id);
-  }
+  // addLectura(data) {
+  //   this.db.list('/lecturas/').push(data);
+  // }
+  //
+  // removeLectura(id) {
+  //   this.db.list('/lecturas/').remove(id);
+  // }
 
 }
