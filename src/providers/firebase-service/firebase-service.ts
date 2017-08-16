@@ -39,9 +39,9 @@ export class FirebaseService {
   // addLectura(data) {
   //   this.db.list('/lecturas/').push(data);
   // }
-  //
-  // removeLectura(id) {
-  //   this.db.list('/lecturas/').remove(id);
-  // }
+
+  removeLectura(id) {
+    this.db.list('/lecturas/').remove(id);
+  }
 
 }

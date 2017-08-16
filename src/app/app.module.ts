@@ -66,4 +66,5 @@ const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

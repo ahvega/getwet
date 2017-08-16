@@ -38,7 +38,7 @@ export class LecturasPage {
         {
           text: "Cancelar",
           handler: data => {
-            console.log("cancelado");
+            console.log("cancelado" + data);
           }
         },
         {
@@ -79,7 +79,7 @@ export class LecturasPage {
         {
           text: "Cancelar",
           handler: data => {
-            console.log("cancelado");
+            console.log("cancelado " + data);
           }
         },
         {
@@ -103,8 +103,37 @@ export class LecturasPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LecturaPage');
+  removeLectura(lectura): void {
+    let prompt = this.alertCtrl.create({
+      title: 'Eliminar Lectura',
+      inputs: [
+        {
+          name: 'fecha',
+          placeholder: lectura.fecha,
+          disabled: true
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log("cancelado " + data)
+          }
+        },
+        {
+          text: 'Eliminar',
+          handler: data => {
+            console.log(data);
+            this.firebaseService.removeLectura(lectura.$key)
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
+
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad LecturaPage');
+  // }
 
 }
